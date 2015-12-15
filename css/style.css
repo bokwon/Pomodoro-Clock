@@ -19,8 +19,9 @@ span {font-size: 14px; font-weight: normal; color: #8A8A8A;}
   text-align: center;
 }
 
-.timer {font-size: 50px; margin-top: 33%;}
-
+.min, .sec {font-size: 50px; display: inline;}
+.sec {color: gray; font-size: 45px;}
+.timer {margin-top: 33%;}
 .play {
   text-align: center;
   margin: 30px;

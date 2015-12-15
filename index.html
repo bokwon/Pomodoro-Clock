@@ -24,21 +24,25 @@
         <div class="setting">
           <form action="#" id="pomodoro_setup">
             <label for="pomodoro">Pomodoro time:</label>
-            <input type="text" name="pomodoro" placeholder="25"> minutes<br>
+            <input type="text" name="pomodoro" value="25" class="pmin"> minutes<br>
             <label for="break">Break time:</label>
-            <input type="text" name="break" placeholder="5"> minutes<br>
+            <input type="text" name="break" value="5" class="bmin"> minutes<br>
             <input type="submit" value="Submit" class="btn btn-default button">
           </form>
         </div>
       </div>
       <div class="col-xs-12 col-sm-4 col-sm-offset-4 clock_container">
         <div id="clock">
-          <p class="timer">25:00</p>
+          <div class="timer">
+            <p class="min">25</p>
+            :
+            <p class="sec">00</p>
+          </div>
         </div>
       </div>
       <div class="col-xs-12 col-sm-4 col-sm-offset-4 play_container">
         <div class="play">
-          <img src="img/player2.png">
+          <img src="img/player2.png" class="play_btn">
         </div>
       </div>
     </div>
