@@ -3,11 +3,11 @@ function setting(){
 }
 
 function swapBtns(){
-  if($(event.currentTarget).attr('src') === 'img/player2.png'){
+  if($(event.currentTarget).attr('src') === 'img/player.png'){
     $(event.currentTarget).attr('src', 'img/stop.png');
     pPlay();
   }else{
-    $(event.currentTarget).attr('src', 'img/player2.png');
+    $(event.currentTarget).attr('src', 'img/player.png');
     pStop();
   }
 }
@@ -26,12 +26,15 @@ function pPlay(){
   function pcountSecs(){
     totalSecs++;
     if(totalSecs <= mintosec){
-      $('.sec').text(pad(totalSecs%60));
-      $('.min').text(pad(pmin-parseInt(totalSecs/60)));
-    }
-    else {
+      if(totalSecs === 60){
+        $('.sec').text(pad(Math.abs(totalSecs%60)));
+        $('.min').text(pad((pmin)-parseInt(totalSecs/60)));
+      }else{
+        $('.sec').text(pad(Math.abs(totalSecs%60-60)));
+        $('.min').text(pad((pmin-1)-parseInt(totalSecs/60)));
+      }
+    }else if(totalSecs === mintosec+1){
       pBreak();
-      return false;
     }
   }
 
@@ -47,25 +50,32 @@ function pPlay(){
   }
 
   function pBreak(){
+    playMusic();
     $('#clock').css('border', '5px solid #00FF7F');
     var totalBSecs = 0;
-    var bmintosec = bmin*60;
+    var bmintosec = (bmin)*60;
     setInterval(bcountSecs, 1000);
 
     function bcountSecs(){
-     totalBSecs++;
+      totalBSecs++;
       if(totalBSecs <= bmintosec){
-        $('.sec').text(pad(totalBSecs%60));
-        $('.min').text(pad(bmin-parseInt(totalBSecs/60)));
+        if(totalBSecs === 60){
+          $('.sec').text(pad(Math.abs(totalBSecs%60)));
+          $('.min').text(pad((bmin)-parseInt(totalBSecs/60)));
+        }else{
+          $('.sec').text(pad(Math.abs(totalBSecs%60-60)));
+          $('.min').text(pad((bmin-1)-parseInt(totalBSecs/60)));
+        }
       }else{
         pStop();
       }
     }
 
-    // function playMusic(){
-    //   var audio = new Audio("audio/beep21.mp3");
-    //   audio.play();
-    // }
+    function playMusic(){
+      var audio = new Audio("audio/beep.mp3");
+      audio.play();
+      return false;
+    }
   }
 }
 
