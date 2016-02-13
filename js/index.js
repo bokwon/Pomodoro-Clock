@@ -7,8 +7,8 @@ var pMin,
     totalBSecs = 0,
     bmintosec,
     minToSec,
-    handle;
-
+    phandle,
+    bhandle;
 
 function swapBtns(){
   if($(event.currentTarget).attr('src') === 'img/player.png'){
@@ -21,6 +21,8 @@ function swapBtns(){
 }
 
 function Stop(){
+  clearInterval(phandle);
+  clearInterval(bhandle);
   var newPomodoro = $('.pmin').val();
   var newBreak = $('.bmin').val();
 
@@ -29,8 +31,7 @@ function Stop(){
 
   $('.min').text(pad(newPomodoro));
   $('.sec').text('00');
-  clearInterval(handle);
-
+  $('#clock').css('border', '5px solid #FFA500');
 }
 
 function Play() {
@@ -39,7 +40,7 @@ function Play() {
   pMin = Number($('.pmin').val());
   bMin = Number($('.bmin').val());
   minToSec = pMin * 60;
-  handle = setInterval(pcountSecs, 1000);
+  phandle = setInterval(pcountSecs, 1000);
 }
 
 function pcountSecs() {
@@ -74,7 +75,7 @@ function pBreak() {
   $('#clock').css('border', '5px solid #4CA64C');
   totalBSecs = 0;
   bmintosec = bMin * 60;
-  setInterval(bcountSecs, 1000);
+  bhandle = setInterval(bcountSecs, 1000);
 }
 
 function bcountSecs(){
