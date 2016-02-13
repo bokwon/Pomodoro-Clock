@@ -1,5 +1,6 @@
 //TODO
 //What happens if setting is changed while pomodoro clock is running?
+//Refactor the code
 
 var pMin,
     bMin,
